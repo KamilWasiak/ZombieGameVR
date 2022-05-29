@@ -1721,9 +1721,9 @@ GameObject:
   m_Component:
   - component: {fileID: 578376449398627443}
   - component: {fileID: 954351770860356386}
+  - component: {fileID: -4266528067734884789}
   - component: {fileID: -973946720523666089}
   - component: {fileID: -9035350977499318125}
-  - component: {fileID: 8073502904898748168}
   m_Layer: 0
   m_Name: TestZombie
   m_TagString: Untagged
@@ -1777,6 +1777,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &-4266528067734884789
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914613880827488}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
+  m_Controller: {fileID: 9100000, guid: fe6b612df4c861f46984d09195fe669d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &-973946720523666089
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1812,20 +1832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: -973946720523666089}
---- !u!114 &8073502904898748168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4493914613880827488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca5b22270e657e47ad96970fac99ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zombieDamage: 25
-  zombieHealth: 100
+  thresholdChange: 0.1
 --- !u!1 &4710940672626480558
 GameObject:
   m_ObjectHideFlags: 0
