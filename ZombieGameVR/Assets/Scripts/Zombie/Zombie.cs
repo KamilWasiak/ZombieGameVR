@@ -8,7 +8,8 @@ using UnityEngine.AI;
 public class Zombie : MonoBehaviour
 {
     [SerializeField]
-    private float zombieMaxHealth, zombieHealth, zombieDamage, attackCooldown;
+    private float zombieMaxHealth, zombieDamage, attackCooldown;
+    public float zombieHealth;
     NavMeshAgent navMeshAgent;
     Rigidbody rb;
     Animator animator;
@@ -16,7 +17,7 @@ public class Zombie : MonoBehaviour
     PlayerStats player;
     Transform playerTransform;
 
-    float thresholdChange = 1.0f;
+    float thresholdChange = 0.5f;
     private Vector3 lastTransformPos;
 
     private bool attackEnabled;
@@ -39,6 +40,7 @@ public class Zombie : MonoBehaviour
     private void Update()
     {
         HandleZombieMovement();
+        ZombieDeath();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,5 +84,22 @@ public class Zombie : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         attackEnabled = true;
+    }
+
+    private void ZombieDeath()
+    {
+        if (zombieHealth <= 0)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
+            navMeshAgent.isStopped = true;
+            animator.SetTrigger("Dead");
+            StartCoroutine(DestroyZombie(50.0f));
+        }
+    }
+
+    private IEnumerator DestroyZombie(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(gameObject);
     }
 }

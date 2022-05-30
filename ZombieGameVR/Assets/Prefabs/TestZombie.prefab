@@ -1724,9 +1724,10 @@ GameObject:
   - component: {fileID: -4266528067734884789}
   - component: {fileID: -973946720523666089}
   - component: {fileID: -9035350977499318125}
+  - component: {fileID: 2758448288077198622}
   m_Layer: 0
   m_Name: TestZombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1740,7 +1741,7 @@ Transform:
   m_GameObject: {fileID: 4493914613880827488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3095270377931777224}
@@ -1807,7 +1808,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1831,8 +1832,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd4cd1db0de8f449ad4a428d92b48d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: -973946720523666089}
-  thresholdChange: 0.1
+  zombieMaxHealth: 100
+  zombieDamage: 25
+  attackCooldown: 5
+  zombieHealth: 0
+--- !u!136 &2758448288077198622
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914613880827488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4710940672626480558
 GameObject:
   m_ObjectHideFlags: 0
