@@ -13,10 +13,12 @@ public class Zombie : MonoBehaviour
     NavMeshAgent navMeshAgent;
     Rigidbody rb;
     Animator animator;
+    Collider zombieCollider;
+
 
     PlayerStats player;
     Transform playerTransform;
-
+ 
     float thresholdChange = 0.5f;
     private Vector3 lastTransformPos;
 
@@ -30,6 +32,7 @@ public class Zombie : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        zombieCollider = GetComponent<Collider>();
 
         lastTransformPos = transform.position;
 
@@ -91,6 +94,7 @@ public class Zombie : MonoBehaviour
         if (zombieHealth <= 0)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
+            zombieCollider.enabled = false;
             navMeshAgent.isStopped = true;
             animator.SetTrigger("Dead");
             StartCoroutine(DestroyZombie(50.0f));

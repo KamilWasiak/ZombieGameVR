@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    int zombieSpawnPerWave;
+    public GameObject zombie;
+    public GameObject[] spawnPoints;
+    float newWaveTime = 20.0f;
+    // Start is called before the first frame update]
+    int spawnPosition;
+
+    private void Start()
     {
-        
+        StartCoroutine(NewWaveCountdown(newWaveTime));
+        newWaveTime = 60.0f;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void StartWave()
     {
-        
+        for (int i = 0; i < zombieSpawnPerWave; i++)
+        {
+            spawnPosition = Random.Range(0, 4);
+            Instantiate(zombie, spawnPoints[spawnPosition].transform);
+        }
+
+        StartCoroutine(NewWaveCountdown(newWaveTime));
     }
+
+    private IEnumerator NewWaveCountdown(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        StartWave();
+    }
+
 }
